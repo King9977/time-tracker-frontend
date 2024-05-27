@@ -1,13 +1,23 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RoutesRecognized } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'time-tracker-frontend';
+  public pagetitle = '';
+
+  constructor(private router: Router) {
+    this.router.events.subscribe((e) => {
+      if (e instanceof RoutesRecognized) {
+        this.pagetitle = '';
+        const route = e.state.root.firstChild;
+        if (route) {
+          this.pagetitle = route.data['pagetitle'] || '';
+        }
+      }
+    });
+  }
 }
