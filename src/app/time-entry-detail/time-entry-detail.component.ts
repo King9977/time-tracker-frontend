@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { TimeEntry } from '../models/time-entry';
 import { TimeEntryService } from '../service/time-entry.service';
-// Annahme: TimeEntry-Modell existiert nicht, verwenden 'any' als Typ
-
 
 @Component({
   selector: 'app-time-entry-detail',
@@ -10,39 +10,56 @@ import { TimeEntryService } from '../service/time-entry.service';
   styleUrls: ['./time-entry-detail.component.css']
 })
 export class TimeEntryDetailComponent implements OnInit {
-  timeEntry: any = {}; // Hier 'any' als Typ für das Zeit-Eintrag verwenden
+  timeEntry: TimeEntry = new TimeEntry(0, new Date(), 0, '', 0, 0);
+  timeEntryForm: FormGroup;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private timeEntryService: TimeEntryService
-  ) { }
-
-  ngOnInit(): void {
-    const timeEntryId = this.route.snapshot.paramMap.get('id');
-    if (timeEntryId !== null) {
-      const id = +timeEntryId;
-      if (!isNaN(id)) {
-        this.timeEntryService.getTimeEntryById(id).subscribe((timeEntry: any) => { // Hier 'any' als Typ für das Zeit-Eintrag verwenden
-          this.timeEntry = timeEntry;
-        });
-      } else {
-        // Behandlung, wenn die ID keine gültige Zahl ist
-      }
-    } else {
-      // Behandlung, wenn keine ID im Pfad vorhanden ist
-    }
-  }
-  
-
-  saveTimeEntry(): void {
-    this.timeEntryService.updateTimeEntry(this.timeEntry.id, this.timeEntry).subscribe((updatedTimeEntry: any) => { // Hier 'any' als Typ für das Zeit-Eintrag verwenden
-      this.timeEntry = updatedTimeEntry;
-      // Optional: Füge eine Erfolgsmeldung hinzu oder leite zur Zeit-Eintrag-Liste weiter
+    private timeEntryService: TimeEntryService,
+    private formBuilder: FormBuilder
+  ) {
+    this.timeEntryForm = this.formBuilder.group({
+      id: [0],
+      date: ['', Validators.required],
+      hours: [0, [Validators.required, Validators.min(0)]],
+      description: ['', Validators.required],
+      projectId: [0, Validators.required],
+      taskId: [0, Validators.required]
     });
   }
 
-  cancel(): void {
-    // Optional: Implementiere Logik für das Abbrechen und Weiterleiten
+  ngOnInit(): void {
+    const timeEntryId = +this.route.snapshot.paramMap.get('id')!;
+    if (timeEntryId) {
+      this.loadTimeEntry(timeEntryId);
+    }
+  }
+
+  loadTimeEntry(id: number): void {
+    this.timeEntryService.get(id).subscribe(timeEntry => {
+      this.timeEntry = timeEntry;
+      this.timeEntryForm.patchValue(this.timeEntry);
+    });
+  }
+
+  saveTimeEntry(): void {
+    if (this.timeEntryForm.valid) {
+      const timeEntryData = this.timeEntryForm.value;
+      if (timeEntryData.id) {
+        this.timeEntryService.update(timeEntryData.id, timeEntryData).subscribe(() => {
+          this.router.navigate(['/time-entries']);
+        });
+      } else {
+        this.timeEntryService.create(timeEntryData).subscribe(() => {
+          this.router.navigate(['/time-entries']);
+        });
+      }
+    }
+  }
+
+  back() {
+    this.router.navigate(['/time-entries']);
+  
   }
 }

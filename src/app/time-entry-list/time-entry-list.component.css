@@ -1,55 +1,53 @@
-/* Position the content towards the top */
-.content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 50px; /* Adjust the top margin as needed */
-    padding: 20px;
-    box-sizing: border-box;
-  }
-  
-  /* Styling the input fields */
-  input[type="text"], textarea {
-    width: 400px; /* Adjust the width as needed */
-    margin-bottom: 20px;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
-  
-  /* Centering the buttons */
-  .buttons {
-    display: flex;
-    justify-content: space-between;
-    width: 400px; /* Match the width of the input fields */
-    margin-bottom: 20px;
-  }
-  
-  /* Styling individual buttons */
-  button {
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .btn-primary {
-    background-color: #007bff;
-    color: white;
-  }
-  
-  .btn-secondary {
-    background-color: #007bff;
-    color: white;
-    margin-top: 10px;
-  }
-  
-  /* Styling the Add New Task button */
-  .btn-secondary.add-task {
-    width: 400px; /* Match the width of the input fields */
-    margin-top: 20px;
-  }
-  
+.header {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 24px;
+  color: #333;
+}
+
+.navbar {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  font-size: 18px;
+}
+
+.container {
+  margin: 20px;
+}
+
+.add-button {
+  margin-bottom: 10px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table, th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #f2f2f2;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}

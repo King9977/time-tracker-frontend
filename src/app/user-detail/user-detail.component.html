@@ -1,18 +1,29 @@
-<!-- user-detail.component.html -->
-<div class="header">
-    HEADER
+<div>
+  <h3>{{ user.username ? 'Benutzer bearbeiten' : 'Neuen Benutzer erfassen' }}</h3>
+
+  <form (ngSubmit)="saveUser(userForm.value)" [formGroup]="userForm">
+
+    <mat-form-field>
+      <mat-label>Benutzername</mat-label>
+      <input type="text" formControlName="username" matInput required />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input type="email" formControlName="email" matInput required />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Passwort</mat-label>
+      <input type="password" formControlName="password" matInput required />
+    </mat-form-field>
+
+    <button mat-flat-button color="warn" type="button" (click)="back()">Abbrechen</button>
+    <button mat-raised-button color="primary" type="submit">Speichern</button>
+
+  </form>
+
+  <div class="tasks">
+
   </div>
-  <div class="navbar">
-    NAVBAR
-  </div>
-  <div class="content">
-    <label for="username">Username:</label>
-    <input type="text" id="username">
-    <label for="email">Email:</label>
-    <input type="text" id="email">
-    <label for="role">Role:</label>
-    <input type="text" id="role">
-    <button>Save</button>
-    <button>Cancel</button>
-  </div>
-  
+</div>
