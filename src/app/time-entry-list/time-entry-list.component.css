@@ -1,3 +1,5 @@
+
+
 .header {
   text-align: center;
   margin-top: 50px;
@@ -6,7 +8,7 @@
 }
 
 .navbar {
-  background-color: #007bff;
+  background-color: #8acdad;
   color: #fff;
   padding: 10px;
   text-align: center;
@@ -15,6 +17,18 @@
 
 .container {
   margin: 20px;
+  background-color: rgb(160, 182, 163); /* Hintergrundfarbe für das gesamte Element mit der Klasse "container" */
+  position: relative;
+  overflow: auto; /* Damit der Container bei Bedarf scrollbar wird */
+}
+
+.image-container {
+  float: right; /* Bild wird ganz rechts ausgerichtet */
+  margin-left: 20px; /* Platz zwischen dem Bild und dem Tabelleninhalt */
+}
+
+.full-width-image {
+  max-width: 100%; /* Das Bild wird innerhalb des Containers nicht breiter als der Container selbst */
 }
 
 .add-button {
@@ -40,7 +54,7 @@ tr:hover {
 }
 
 button {
-  background-color: #007bff;
+  background-color: #8acdad;
   color: white;
   border: none;
   padding: 5px 10px;
@@ -49,5 +63,5 @@ button {
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #8b8acd;
 }

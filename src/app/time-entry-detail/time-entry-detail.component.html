@@ -1,6 +1,11 @@
-<div>
+<div class="container">
   <h3>{{ timeEntry.id ? 'Zeiteintrag bearbeiten' : 'Neuen Zeiteintrag erfassen' }}</h3>
 
+  <div class="image-container">
+    <img src="assets/images/TimeTracker-Senay.png" alt="Dein Bild" class="full-width-image">
+  </div>
+
+</div>
   <form [formGroup]="timeEntryForm" (ngSubmit)="saveTimeEntry()">
     <mat-form-field>
       <mat-label>Datum</mat-label>
@@ -33,8 +38,5 @@
     <button mat-button type="button" (click)="back()">Abbrechen</button>
   </form>
   
-
 <div class="tasks">
-
-</div>
 </div>
