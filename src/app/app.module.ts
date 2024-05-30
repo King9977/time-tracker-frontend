@@ -67,7 +67,7 @@ export function storageFactory(): OAuthStorage {
     TimeEntryListComponent,
     TimeEntryDetailComponent,
     UserListComponent,
-    UserDetailComponent
+    UserDetailComponent,
   ],
   imports: [
     BrowserModule,

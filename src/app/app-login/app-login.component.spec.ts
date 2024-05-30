@@ -2,9 +2,9 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AppLoginComponent } from './app-login.component';
 import { AuthConfig, OAuthModule } from 'angular-oauth2-oidc';
-import { authConfig } from 'src/app/app.module';
 import { HttpClient } from '@angular/common/http';
 import { MatIconModule } from '@angular/material/icon';
+import { authConfig } from '../app.module';
 
 describe('AppLoginComponent', () => {
   let component: AppLoginComponent;
