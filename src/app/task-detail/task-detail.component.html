@@ -1,1 +1,33 @@
-<p>task-detail works!</p>
+<div class="content form">
+  <h3>{{ task.name ? task.name : 'Projekt' }} {{ task.id ? 'bearbeiten' : 'erfassen'}}</h3>
+
+  <form (ngSubmit)="saveTask(taskForm.value)" [formGroup]="taskForm">
+
+      <mat-form-field>
+        <mat-label>Projektname</mat-label>
+        <input type="text" formControlName="name" matInput required />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Beschreibung</mat-label>
+        <input type="text" formControlName="description" matInput required />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Projekt</mat-label>
+        <mat-select formControlName="projectId" required>
+          <mat-option *ngFor="let project of projects" [value]="project.id">
+            {{ project.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button mat-flat-button color="disabled" type="reset" (click)="back()">Abbrechen</button>
+      <button mat-raised-button color="primary" type="submit">Speichern</button>
+
+  </form>
+
+  <div class="tasks">
+    <!-- Task list goes here -->
+  </div>
+</div>

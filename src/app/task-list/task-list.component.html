@@ -1,1 +1,21 @@
-<p>task-list works!</p>
+<div class="container">
+  <button routerLink="/tasks/add" class="add-button">Add New Task</button>
+
+  <table>
+    <tr>
+      <th>Task Name</th>
+      <th>Beschreibung</th>
+      <th>Project</th>
+      <th>Actions</th>
+    </tr>
+    <tr *ngFor="let task of tasks">
+      <td>{{ task.name }}</td>
+      <td>{{ task.description }}</td>
+      <td>{{ task.projectId }}</td> <!-- Hier wird der Name des Projekts angezeigt -->
+      <td>
+        <button routerLink="/tasks/{{ task.id }}">Edit</button>
+        <button (click)="deleteTask(task.id)">Delete</button>
+      </td>
+    </tr>
+  </table>
+</div>

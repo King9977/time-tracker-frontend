@@ -1,1 +1,24 @@
-<p>project-detail works!</p>
+<div>
+  <h3>{{ project.name ? project.name : 'Projekt' }} {{ project.id ? 'bearbeiten' : 'erfassen'}}</h3>
+
+  <form (ngSubmit)="saveProject(projectForm.value)" [formGroup]="projectForm">
+
+      <mat-form-field>
+        <mat-label>Projektname</mat-label>
+        <input type="text" formControlName="name" matInput required />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Beschreibung</mat-label>
+        <input type="text" formControlName="description" matInput required />
+      </mat-form-field>
+
+      <button mat-flat-button color="disabled" type="reset" (click)="back()">Abbrechen</button>
+      <button mat-raised-button color="primary" type="submit">Speichern</button>
+
+  </form>
+
+  <div class="tasks">
+    <!-- Task list goes here -->
+  </div>
+</div>

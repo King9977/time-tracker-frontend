@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // FormsModule importieren
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -20,15 +20,27 @@ import { TimeEntryListComponent } from './time-entry-list/time-entry-list.compon
 import { TimeEntryDetailComponent } from './time-entry-detail/time-entry-detail.component';
 import { AppAuthGuard } from './guard/app.auth.guard';
 import { AppAuthService } from './service/app.auth.service';
-import { AppRoles } from './app.roles';
 import { AuthConfig, OAuthModule, OAuthStorage } from 'angular-oauth2-oidc';
+import { ProjectListComponent } from './project-list/project-list.component';
+import { ProjectService } from './service/project.service';
+import { TaskService } from './service/task.service';
+import { TimeEntryService } from './service/time-entry.service';
+import { TaskListComponent } from './task-list/task-list.component';
+import { AppLoginComponent } from './app-login/app-login.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
+import { MatChipsModule } from '@angular/material/chips';
+import { ProjectDetailComponent } from './project-detail/project-detail.component';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
+import { TaskDetailComponent } from './task-detail/task-detail.component';
 
 export const authConfig: AuthConfig = {
-  issuer: 'http://localhost:8080/realms/ILV',
+  issuer: 'http://localhost:8080/realms/timetracker',
   requireHttps: false,
-//   redirectUri: environment.frontendBaseUrl,
-//   postLogoutRedirectUri: environment.frontendBaseUrl,
-  clientId: 'demoapp',
+  redirectUri: 'http://localhost:4200',
+  postLogoutRedirectUri: 'http://localhost:4200',
+  clientId: 'timetrackerapp',
   scope: 'openid profile roles offline_access',
   responseType: 'code',
   showDebugInformation: true,
@@ -47,6 +59,12 @@ export function storageFactory(): OAuthStorage {
     AppComponent,
     TimeEntryListComponent,
     TimeEntryDetailComponent,
+    ProjectListComponent,
+    ProjectDetailComponent,
+    TaskListComponent,
+    TaskDetailComponent,
+    AppLoginComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -67,14 +85,15 @@ export function storageFactory(): OAuthStorage {
     MatInputModule,
     MatTableModule,
     MatIconModule,
+    MatChipsModule,
     MatButtonModule,
+    MatRadioModule,
+    MatSelectModule,
     MatDialogModule,
     MatSnackBarModule,
     MatToolbarModule,
+    MatSelectModule,
     MatMenuModule,
-    MatCardModule,
-    MatToolbarModule,
-    MatIconModule,
     RouterModule
   ],
   providers: [
@@ -86,7 +105,7 @@ export function storageFactory(): OAuthStorage {
       provide: OAuthStorage,
       useFactory: storageFactory
     },
-    AppAuthGuard
+    AppAuthGuard,
   ],
   bootstrap: [AppComponent]
 })
