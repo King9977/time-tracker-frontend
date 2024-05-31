@@ -1,6 +1,11 @@
-<div class="content form">
+<div class="container">
   <h3>{{ task.name ? task.name : 'Projekt' }} {{ task.id ? 'bearbeiten' : 'erfassen'}}</h3>
 
+  <div class="image-container">
+    <img src="assets/images/TimeTracker-Senay.png" alt="Dein Bild" class="full-width-image">
+  </div>
+
+</div>
   <form (ngSubmit)="saveTask(taskForm.value)" [formGroup]="taskForm">
 
       <mat-form-field>
@@ -28,6 +33,5 @@
   </form>
 
   <div class="tasks">
-    <!-- Task list goes here -->
   </div>
-</div>
+

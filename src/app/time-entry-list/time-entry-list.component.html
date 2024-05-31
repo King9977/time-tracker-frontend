@@ -1,20 +1,28 @@
-<div class="header">
-  HEADER
-</div>
-<div class="navbar">
-  NAVBAR
-</div>
-<div class="content">
+<div class="container">
+  <button routerLink="/time-entry/add" class="add-button">Add New Time Entry</button>
+
+  <div class="image-container">
+    <img src="assets/images/TimeTracker-Senay.png" alt="Dein Bild" class="full-width-image">
+  </div>
   
-  <button routerLink="/time-entry/add">Add New Time Entry</button>
-  <div class="time-entry">
-    Time Entry 1 | <button routerLink="/time-entry/1">View</button> <button>Edit</button> <button>Delete</button>
-  </div>
-  <div class="time-entry">
-    Time Entry 2 | <button routerLink="/time-entry/2">View</button> <button>Edit</button> <button>Delete</button>
-  </div>
-  <div class="time-entry">
-    Time Entry 3 | <button routerLink="/time-entry/3">View</button> <button>Edit</button> <button>Delete</button>
-  </div>
-  <!-- Repeat for other time entries -->
+  <table>
+    <tr>
+      <th>Datum</th>
+      <th>Beschreibung</th>
+      <th>Projekt</th>
+      <th>Task</th>
+      <th>Actions</th>
+    </tr>
+    <tr *ngFor="let entry of timeEntries">
+      <td>{{ entry.date | date }}</td>
+      <td>{{ entry.description }}</td>
+      <td>{{ entry.projectId }}</td>
+      <td>{{ entry.taskId }}</td>
+      <td>
+        <button routerLink="/time-entry/{{ entry.id }}">View</button>
+        <button>Edit</button>
+        <button (click)="deleteTimeEntry(entry.id)">Delete</button>
+      </td>
+    </tr>
+  </table>
 </div>

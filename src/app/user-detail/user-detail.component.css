@@ -1,0 +1,70 @@
+.container {
+  background-color: rgb(160, 182, 163); /* Hintergrundfarbe für das gesamte Element mit der Klasse "container" */
+  position: relative;
+  overflow: auto; /* Damit der Container bei Bedarf scrollbar wird */
+  padding: 20px; /* Füge etwas Abstand um den Container hinzu */
+  border-radius: 10px; /* Runde die Ecken des Containers */
+}
+
+.image-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.image-container img {
+  max-width: 100px; /* Stelle sicher, dass das Bild nicht zu breit wird */
+  max-height: 100px; /* Stelle sicher, dass das Bild nicht zu hoch wird */
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+mat-form-field input {
+  font-size: 16px;
+  border-radius: 4px;
+}
+
+mat-form-field textarea {
+  font-size: 16px;
+  border-radius: 4px;
+  resize: vertical; /* Erlaube vertikales Ändern der Höhe */
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: #8acdad;
+  color: white;
+}
+
+.btn-secondary {
+  background-color: #8acdad;
+  color: white;
+  margin-top: 10px;
+}
+
+.btn-secondary.add-task {
+  width: 100%;
+  margin-top: 20px;
+}

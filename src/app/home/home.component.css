@@ -1,14 +1,22 @@
-.header {
-    text-align: center;
-    margin-top: 50px;
-    font-size: 24px;
-    color: #333;
+.header-container {
+  background-color: #8acdad;
+  padding: 50px 0;
+  text-align: center;
 }
 
-.navbar {
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px;
-    text-align: center;
-    font-size: 18px;
+.header-content h1 {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 700;
+  color: #fff;
+  margin: 20px 0;
+}
+
+/* Bild-Styling */
+.image-container {
+  text-align: center;
+}
+
+.full-width-image {
+  width: 100%;
+  height: auto;
 }

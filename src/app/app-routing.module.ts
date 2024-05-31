@@ -15,9 +15,6 @@ import { ProjectDetailComponent } from './project-detail/project-detail.componen
 const routes: Routes = [
   { path: '', component: HomeComponent },
   
-  { path: 'time-entry/add', component: TimeEntryDetailComponent }, 
-  { path: 'time-entry/:id', component: TimeEntryDetailComponent },
-
   { 
     path: 'projects', 
     component: ProjectListComponent, 
@@ -50,6 +47,9 @@ const routes: Routes = [
     // canActivate: [AppAuthGuard], 
     data: { roles: [AppRoles.Update], pagetitle: 'Task Detail' } 
   },
+
+  //* { path: 'time-entry/add', component: TimeEntryDetailComponent }, *//
+
   { 
     path: 'time-entries', 
     component: TimeEntryListComponent, 
@@ -58,7 +58,7 @@ const routes: Routes = [
   },
   
   { 
-    path: 'time-entries/:id', 
+    path: 'time-entry/:id', 
     component: TimeEntryDetailComponent, 
     // canActivate: [AppAuthGuard], 
     data: { roles: [AppRoles.Update], pagetitle: 'Time Entry Detail' } 
@@ -69,6 +69,14 @@ const routes: Routes = [
     // canActivate: [AppAuthGuard], 
     data: { roles: [AppRoles.Read], pagetitle: 'Users' } 
   },
+
+  { 
+    path: 'users/add', 
+    component: UserDetailComponent, 
+    // canActivate: [AppAuthGuard], 
+    data: { roles: [AppRoles.Update], pagetitle: 'Add New User' } 
+  },
+  
   { 
     path: 'users/:id', 
     component: UserDetailComponent, 

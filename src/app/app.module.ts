@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // FormsModule importieren
+import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
@@ -22,9 +21,6 @@ import { AppAuthGuard } from './guard/app.auth.guard';
 import { AppAuthService } from './service/app.auth.service';
 import { AuthConfig, OAuthModule, OAuthStorage } from 'angular-oauth2-oidc';
 import { ProjectListComponent } from './project-list/project-list.component';
-import { ProjectService } from './service/project.service';
-import { TaskService } from './service/task.service';
-import { TimeEntryService } from './service/time-entry.service';
 import { TaskListComponent } from './task-list/task-list.component';
 import { AppLoginComponent } from './app-login/app-login.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
@@ -34,6 +30,11 @@ import { MatChipsModule } from '@angular/material/chips';
 import { ProjectDetailComponent } from './project-detail/project-detail.component';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { TaskDetailComponent } from './task-detail/task-detail.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { UserListComponent } from './user-list/user-list.component';
+import { UserDetailComponent } from './user-detail/user-detail.component';
 
 export const authConfig: AuthConfig = {
   issuer: 'http://localhost:8080/realms/timetracker',
@@ -57,14 +58,16 @@ export function storageFactory(): OAuthStorage {
 @NgModule({
   declarations: [
     AppComponent,
-    TimeEntryListComponent,
-    TimeEntryDetailComponent,
+    AppLoginComponent,
+    ConfirmDialogComponent,
     ProjectListComponent,
     ProjectDetailComponent,
     TaskListComponent,
     TaskDetailComponent,
-    AppLoginComponent,
-    ConfirmDialogComponent
+    TimeEntryListComponent,
+    TimeEntryDetailComponent,
+    UserListComponent,
+    UserDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -94,7 +97,9 @@ export function storageFactory(): OAuthStorage {
     MatToolbarModule,
     MatSelectModule,
     MatMenuModule,
-    RouterModule
+    RouterModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [
     {

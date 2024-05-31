@@ -5,8 +5,8 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class TimeEntryService {
-  private apiUrl = 'http://localhost:9090/api/timeEntry';
+export class UserService {
+  private apiUrl = 'http://localhost:9090/api/user';
 
   constructor(private http: HttpClient) {}
 
@@ -14,16 +14,16 @@ export class TimeEntryService {
     return this.http.get<any[]>(this.apiUrl);
   }
 
-  create(timeEntry: any): Observable<any> {
-    return this.http.post<any>(this.apiUrl, timeEntry);
+  create(user: any): Observable<any> {
+    return this.http.post<any>(this.apiUrl, user);
   }
 
   get(id: number): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/${id}`);
   }
 
-  update(id: number, timeEntry: any): Observable<any> {
-    return this.http.put<any>(`${this.apiUrl}/${id}`, timeEntry);
+  update(id: number, user: any): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/${id}`, user);
   }
 
   delete(id: number): Observable<HttpResponse<string>> {
