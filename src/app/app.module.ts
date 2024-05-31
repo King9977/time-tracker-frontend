@@ -11,7 +11,6 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
-import { MatCardModule } from '@angular/material/card';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,7 +22,6 @@ import { AuthConfig, OAuthModule, OAuthStorage } from 'angular-oauth2-oidc';
 import { ProjectListComponent } from './project-list/project-list.component';
 import { TaskListComponent } from './task-list/task-list.component';
 import { AppLoginComponent } from './app-login/app-login.component';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatChipsModule } from '@angular/material/chips';
@@ -35,6 +33,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
+import { IsInRoleDirective } from './dir/is.in.role.dir';
+import { IsInRolesDirective } from './dir/is.in.roles.dir';
 
 export const authConfig: AuthConfig = {
   issuer: 'http://localhost:8080/realms/timetracker',
@@ -68,6 +68,8 @@ export function storageFactory(): OAuthStorage {
     TimeEntryDetailComponent,
     UserListComponent,
     UserDetailComponent,
+    IsInRoleDirective,
+    IsInRolesDirective,
   ],
   imports: [
     BrowserModule,
@@ -99,7 +101,7 @@ export function storageFactory(): OAuthStorage {
     MatMenuModule,
     RouterModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
   ],
   providers: [
     {

@@ -15,7 +15,7 @@
     <tr *ngFor="let task of tasks">
       <td>{{ task.name }}</td>
       <td>{{ task.description }}</td>
-      <td>{{ task.projectId }}</td> <!-- Hier wird der Name des Projekts angezeigt -->
+      <td>{{ getProjectNameById(task.projectId) }}</td>
       <td>
         <button routerLink="/tasks/{{ task.id }}">Edit</button>
         <button (click)="deleteTask(task.id)">Delete</button>

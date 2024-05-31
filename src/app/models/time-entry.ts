@@ -1,24 +1,11 @@
 export class TimeEntry {
-    id!: number; 
-    date: Date; 
-    hours: number;
-    description: string;
-    projectId: number;
-    taskId: number;
-
     constructor(
-        id: number,
-        date: Date,
-        hours: number,
-        description: string,
-        projectId: number,
-        taskId: number
-    ) {
-        this.id = id;
-        this.date = date;
-        this.hours = hours;
-        this.description = description;
-        this.projectId = projectId;
-        this.taskId = taskId;
-    }
-}
+      public id: number,
+      public date: Date,
+      public startTime: string,
+      public endTime: string,
+      public taskId: number = 0,
+      public userId: number = 0
+    ) {}
+  }
+  

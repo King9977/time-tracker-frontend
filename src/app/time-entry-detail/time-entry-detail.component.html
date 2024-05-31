@@ -4,39 +4,40 @@
   <div class="image-container">
     <img src="assets/images/TimeTracker-Senay.png" alt="Dein Bild" class="full-width-image">
   </div>
+</div>
 
-</div>
-  <form [formGroup]="timeEntryForm" (ngSubmit)="saveTimeEntry()">
-    <mat-form-field>
-      <mat-label>Datum</mat-label>
-      <input matInput [matDatepicker]="picker" formControlName="date" required>
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
-  
-    <mat-form-field>
-      <mat-label>Stunden</mat-label>
-      <input matInput type="number" formControlName="hours" required>
-    </mat-form-field>
-  
-    <mat-form-field>
-      <mat-label>Beschreibung</mat-label>
-      <textarea matInput formControlName="description" required></textarea>
-    </mat-form-field>
-  
-    <mat-form-field>
-      <mat-label>Projekt</mat-label>
-      <input matInput formControlName="projectId" required>
-    </mat-form-field>
-  
-    <mat-form-field>
-      <mat-label>Task</mat-label>
-      <input matInput formControlName="taskId" required>
-    </mat-form-field>
-  
-    <button mat-raised-button color="primary" type="submit">Speichern</button>
-    <button mat-button type="button" (click)="back()">Abbrechen</button>
-  </form>
-  
-<div class="tasks">
-</div>
+<form [formGroup]="timeForm" (ngSubmit)="saveTimeEntry()">
+  <mat-form-field>
+    <mat-label>Datum</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="date" required>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Startzeit</mat-label>
+    <input matInput type="time" formControlName="startTime" required>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Endzeit</mat-label>
+    <input matInput type="time" formControlName="endTime" required>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Aufgabe</mat-label>
+    <mat-select formControlName="taskId" required>
+      <mat-option *ngFor="let task of tasks" [value]="task.id">
+        {{ task.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>User</mat-label>
+    <input matInput formControlName="userId" required>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit">Speichern</button>
+  <button mat-button type="button" (click)="back()">Abbrechen</button>
+</form>

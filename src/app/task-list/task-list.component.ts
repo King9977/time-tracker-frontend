@@ -4,6 +4,8 @@ import { Task } from '../models/task';
 import { ConfirmDialogComponent } from '../components/confirm-dialog/confirm-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Project } from '../models/project';
+import { ProjectService } from '../service/project.service';
 
 @Component({
   selector: 'app-task-list',
@@ -12,21 +14,36 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class TaskListComponent implements OnInit {
   tasks: Task[] = [];
+  projects: Project[] = [];
 
   constructor(
     private taskService: TaskService,
+    private projectService: ProjectService,
     private dialog: MatDialog,
     private snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
     this.loadTasks();
+    this.loadProjects();
   }
 
   loadTasks() {
     this.taskService.getAllTasks().subscribe((tasks: Task[]) => {
       this.tasks = tasks;
     });
+  }
+
+  loadProjects() {
+    this.projectService.getAll().subscribe((projects: Project[]) => {
+      this.projects = projects;
+    });
+  }
+  
+
+  getProjectNameById(projectId: number): string {
+    const projects = this.projects.find(projects => projects.id === projectId);
+    return projects ? projects.name : '';
   }
 
   deleteTask(id: number) {

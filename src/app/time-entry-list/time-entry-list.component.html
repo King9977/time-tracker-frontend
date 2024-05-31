@@ -8,21 +8,22 @@
   <table>
     <tr>
       <th>Datum</th>
-      <th>Beschreibung</th>
-      <th>Projekt</th>
-      <th>Task</th>
+      <th>Startzeit</th>
+      <th>Endzeit</th>
+      <th>Dauer (Minuten)</th>
+      <th>Aufgabe</th>
       <th>Actions</th>
     </tr>
     <tr *ngFor="let entry of timeEntries">
       <td>{{ entry.date | date }}</td>
-      <td>{{ entry.description }}</td>
-      <td>{{ entry.projectId }}</td>
-      <td>{{ entry.taskId }}</td>
+      <td>{{ entry.startTime }}</td>
+      <td>{{ entry.endTime }}</td>
+      <td>{{ calculateDuration(entry.startTime, entry.endTime) }}</td>
+      <td>{{ getTaskNameById(entry.taskId) }}</td>
       <td>
-        <button routerLink="/time-entry/{{ entry.id }}">View</button>
-        <button>Edit</button>
         <button (click)="deleteTimeEntry(entry.id)">Delete</button>
       </td>
     </tr>
   </table>
+  
 </div>

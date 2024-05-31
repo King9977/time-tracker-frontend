@@ -34,12 +34,6 @@ export class TaskDetailComponent implements OnInit {
   ngOnInit(): void {
     this.taskId = +this.route.snapshot.paramMap.get('id')!;
     this.loadTask(this.taskId);
-    // this.taskForm = this.formBuilder.group({
-    //   id: [0],
-    //   name: [''],
-    //   description: [''],
-    //   project: ['']
-    // });
     this.loadProjects();
   }
   
@@ -50,9 +44,11 @@ export class TaskDetailComponent implements OnInit {
   }
 
   
+  
   loadTask(taskId: number): void {
     this.taskService.get(taskId).subscribe(task => {
       this.task = task;
+      this.taskForm = this.formBuilder.group(this.task)
     });
   }
 
