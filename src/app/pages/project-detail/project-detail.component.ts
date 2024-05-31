@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProjectService } from '../service/project.service';
-import { Project } from '../models/project';
+import { ProjectService } from '../../service/project.service';
+import { Project } from '../../models/project';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({

@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TaskService } from '../service/task.service';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { Task } from '../models/task';
-import { Project } from '../models/project';
-import { ProjectService } from '../service/project.service';
+import { Task } from '../../models/task';
+import { Project } from '../../models/project';
+import { TaskService } from '../../service/task.service';
+import { ProjectService } from '../../service/project.service';
+
 
 @Component({
   selector: 'app-task-detail',

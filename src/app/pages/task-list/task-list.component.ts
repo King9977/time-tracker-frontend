@@ -1,26 +1,37 @@
 import { Component, OnInit } from '@angular/core';
-import { ProjectService } from '../service/project.service';
-import { Project } from '../models/project';
-import { ConfirmDialogComponent } from '../components/confirm-dialog/confirm-dialog.component';
+import { TaskService } from '../../service/task.service';
+import { Task } from '../../models/task';
+import { ConfirmDialogComponent } from '../../components/confirm-dialog/confirm-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Project } from '../../models/project';
+import { ProjectService } from '../../service/project.service';
 
 @Component({
-  selector: 'app-project-list',
-  templateUrl: './project-list.component.html',
-  styleUrls: ['./project-list.component.css']
+  selector: 'app-task-list',
+  templateUrl: './task-list.component.html',
+  styleUrls: ['./task-list.component.css']
 })
-export class ProjectListComponent implements OnInit {
+export class TaskListComponent implements OnInit {
+  tasks: Task[] = [];
   projects: Project[] = [];
 
   constructor(
-    private projectService: ProjectService,   
+    private taskService: TaskService,
+    private projectService: ProjectService,
     private dialog: MatDialog,
     private snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
+    this.loadTasks();
     this.loadProjects();
+  }
+
+  loadTasks() {
+    this.taskService.getAllTasks().subscribe((tasks: Task[]) => {
+      this.tasks = tasks;
+    });
   }
 
   loadProjects() {
@@ -28,8 +39,14 @@ export class ProjectListComponent implements OnInit {
       this.projects = projects;
     });
   }
+  
 
-  deleteProject(id: number) {
+  getProjectNameById(projectId: number): string {
+    const projects = this.projects.find(projects => projects.id === projectId);
+    return projects ? projects.name : '';
+  }
+
+  deleteTask(id: number) {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       maxWidth: '400px',
       data: {
@@ -40,11 +57,11 @@ export class ProjectListComponent implements OnInit {
 
   dialogRef.afterClosed().subscribe(dialogResult => {
     if (dialogResult === true) {
-      this.projectService.delete(id).subscribe({
+      this.taskService.delete(id).subscribe({
         next: response => {
           if (response.status === 200) {
             this.snackBar.open('Der Eintrag ist gelöscht worden.', '', {duration: 4000});
-            this.loadProjects()
+            this.loadTasks()
           } else {
             this.snackBar.open('Es ist ein Fehler aufgetreten.', '', {duration: 4000});
           }
@@ -52,6 +69,5 @@ export class ProjectListComponent implements OnInit {
         error: () => this.snackBar.open('Es ist ein Fehler aufgetreten.', '', {duration: 4000})
       })
     }
-  })
-}
+  })  }
 }

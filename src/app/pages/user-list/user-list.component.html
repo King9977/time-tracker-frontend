@@ -16,7 +16,7 @@
       <td>{{ user.email }}</td>
       <td>
         <button routerLink="/users/edit/{{ user.id }}">Edit</button> 
-        <button (click)="deleteUser(user.id)">Delete</button>
+        <button (click)="deleteUser(user.id)" *appIsInRole="'admin'">Delete</button>
       </td>
     </tr>
   </table>

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UserService } from '../service/user.service';
-import { User } from '../models/user';
+
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { UserService } from '../../service/user.service';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'app-user-detail',

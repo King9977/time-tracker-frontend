@@ -14,27 +14,28 @@ import { MatMenuModule } from '@angular/material/menu';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TimeEntryListComponent } from './time-entry-list/time-entry-list.component';
-import { TimeEntryDetailComponent } from './time-entry-detail/time-entry-detail.component';
 import { AppAuthGuard } from './guard/app.auth.guard';
 import { AppAuthService } from './service/app.auth.service';
 import { AuthConfig, OAuthModule, OAuthStorage } from 'angular-oauth2-oidc';
-import { ProjectListComponent } from './project-list/project-list.component';
-import { TaskListComponent } from './task-list/task-list.component';
+import { TaskListComponent } from './pages/task-list/task-list.component';
 import { AppLoginComponent } from './app-login/app-login.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatChipsModule } from '@angular/material/chips';
-import { ProjectDetailComponent } from './project-detail/project-detail.component';
+import { ProjectDetailComponent } from './pages/project-detail/project-detail.component';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
-import { TaskDetailComponent } from './task-detail/task-detail.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { UserListComponent } from './user-list/user-list.component';
-import { UserDetailComponent } from './user-detail/user-detail.component';
+
 import { IsInRoleDirective } from './dir/is.in.role.dir';
 import { IsInRolesDirective } from './dir/is.in.roles.dir';
+import { TaskDetailComponent } from './pages/task-detail/task-detail.component';
+import { TimeEntryListComponent } from './pages/time-entry-list/time-entry-list.component';
+import { TimeEntryDetailComponent } from './pages/time-entry-detail/time-entry-detail.component';
+import { UserListComponent } from './pages/user-list/user-list.component';
+import { UserDetailComponent } from './pages/user-detail/user-detail.component';
+import { ProjectListComponent } from './pages/project-list/project-list.component';
 
 export const authConfig: AuthConfig = {
   issuer: 'http://localhost:8080/realms/timetracker',

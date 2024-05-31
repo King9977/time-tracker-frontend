@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { TimeEntryService } from '../service/time-entry.service';
-import { Project } from '../models/project';
-import { ProjectService } from '../service/project.service';
-import { TimeEntry } from '../models/time-entry';
-import { Task } from '../models/task'; // Importieren Sie das Task-Modell
-import { TaskService } from '../service/task.service'; // Importieren Sie den TaskService
+import { TimeEntry } from '../../models/time-entry';
+import { TimeEntryService } from '../../service/time-entry.service';
+import { ProjectService } from '../../service/project.service';
+import { TaskService } from '../../service/task.service';
+import { Project } from '../../models/project';
+import { Task } from '../../models/task';
+
 
 @Component({
   selector: 'app-time-entry-detail',
@@ -16,7 +17,7 @@ import { TaskService } from '../service/task.service'; // Importieren Sie den Ta
 export class TimeEntryDetailComponent implements OnInit {
   timeEntry: TimeEntry = new TimeEntry(0, new Date(), '', '', 0, 0,);
   projects: Project[] = [];
-  tasks: Task[] = []; // Definieren Sie die tasks-Eigenschaft
+  tasks: Task[] = [];
 
   public timeForm = new FormGroup({
     id: new FormControl(0),

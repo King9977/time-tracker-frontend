@@ -18,7 +18,7 @@
       <td>{{ getProjectNameById(task.projectId) }}</td>
       <td>
         <button routerLink="/tasks/{{ task.id }}">Edit</button>
-        <button (click)="deleteTask(task.id)">Delete</button>
+        <button (click)="deleteTask(task.id)" *appIsInRole="'admin'">Delete</button>
       </td>
     </tr>
   </table>

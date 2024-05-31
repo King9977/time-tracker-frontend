@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { TimeEntry } from '../models/time-entry';
-import { TimeEntryService } from '../service/time-entry.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ConfirmDialogComponent } from '../components/confirm-dialog/confirm-dialog.component';
-import { TaskService } from '../service/task.service';
-import { Task } from '../models/task';
+import { TimeEntry } from '../../models/time-entry';
+import { Task } from '../../models/task';
+import { TimeEntryService } from '../../service/time-entry.service';
+import { TaskService } from '../../service/task.service';
+import { ConfirmDialogComponent } from '../../components/confirm-dialog/confirm-dialog.component';
+
 
 @Component({
   selector: 'app-time-entry-list',

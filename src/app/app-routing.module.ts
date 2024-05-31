@@ -1,16 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { ProjectListComponent } from './project-list/project-list.component';
-import { TaskListComponent } from './task-list/task-list.component';
-import { TaskDetailComponent } from './task-detail/task-detail.component';
-import { TimeEntryListComponent } from './time-entry-list/time-entry-list.component';
-import { TimeEntryDetailComponent } from './time-entry-detail/time-entry-detail.component';
-import { UserListComponent } from './user-list/user-list.component';
-import { UserDetailComponent } from './user-detail/user-detail.component';
+import { HomeComponent } from './pages/home/home.component';
+import { TaskListComponent } from './pages/task-list/task-list.component';
+
 import { AppRoles } from './app.roles';
-import { ProjectDetailComponent } from './project-detail/project-detail.component';
+import { ProjectDetailComponent } from './pages/project-detail/project-detail.component';
 import { AppAuthGuard } from './guard/app.auth.guard';
+import { ProjectListComponent } from './pages/project-list/project-list.component';
+import { TaskDetailComponent } from './pages/task-detail/task-detail.component';
+import { TimeEntryListComponent } from './pages/time-entry-list/time-entry-list.component';
+import { TimeEntryDetailComponent } from './pages/time-entry-detail/time-entry-detail.component';
+import { UserListComponent } from './pages/user-list/user-list.component';
+import { UserDetailComponent } from './pages/user-detail/user-detail.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },

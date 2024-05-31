@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { UserService } from '../service/user.service';
-import { User } from '../models/user';
-import { ConfirmDialogComponent } from '../components/confirm-dialog/confirm-dialog.component';
+import { Component, OnInit } from '@angular/core';;
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { UserService } from '../../service/user.service';
+import { User } from '../../models/user';
+import { ConfirmDialogComponent } from '../../components/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-user-list',
